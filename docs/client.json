@@ -1,0 +1,13 @@
+{
+  "client_id": "https://cgouty.github.io/christog-id/client.json",
+  "client_name": "ChristoG",
+  "client_uri": "https://cgouty.github.io/christog-id/",
+  "redirect_uris": [
+    "https://cgouty.github.io/christog-id/callback/",
+    "http://localhost:9100/hub/connectors/callback",
+    "http://127.0.0.1:9100/hub/connectors/callback"
+  ],
+  "grant_types": ["authorization_code", "refresh_token"],
+  "response_types": ["code"],
+  "token_endpoint_auth_method": "none"
+}
