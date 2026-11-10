@@ -1,9 +1,9 @@
 {
-  "client_id": "https://cgouty.github.io/christog-id/client.json",
+  "client_id": "https://cgouty.github.io/christog-id/christog-id/client.json",
   "client_name": "ChristoG",
-  "client_uri": "https://cgouty.github.io/christog-id/",
+  "client_uri": "https://cgouty.github.io/christog-id/christog-id/",
   "redirect_uris": [
-    "https://cgouty.github.io/christog-id/callback/",
+    "https://cgouty.github.io/christog-id/christog-id/callback/",
     "http://localhost:9100/hub/connectors/callback",
     "http://127.0.0.1:9100/hub/connectors/callback"
   ],
