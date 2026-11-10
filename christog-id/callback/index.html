@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Returning to ChristoG</title></head>
+<body style="font-family:system-ui,sans-serif;max-width:36em;margin:3em auto;padding:0 1em">
+<h1>Returning to ChristoG…</h1>
+<p id="msg">Handing your sign-in back to ChristoG on this computer.</p>
+<p id="link" hidden><a id="a" href="#">Click here if nothing happens</a></p>
+<script>
+(function () {
+  // Forwards the sign-in answer to ChristoG running on THIS computer. Only a fixed set of answer
+  // fields is passed on, and the target is always localhost, so this page can't be used as an open redirect.
+  var q = new URLSearchParams(location.search), out = new URLSearchParams();
+  ["code", "state", "error", "error_description", "iss"].forEach(function (k) {
+    if (q.has(k)) out.set(k, q.get(k).slice(0, 4096));
+  });
+  var state = q.get("state") || "", m = /^p(\d{4,5})\./.exec(state), port = m ? parseInt(m[1], 10) : 9100;
+  if (!(port >= 1024 && port <= 65535)) port = 9100;
+  var url = "http://localhost:" + port + "/hub/connectors/callback?" + out.toString();
+  if (!out.has("code") && !out.has("error")) {
+    document.getElementById("msg").textContent = "Nothing to hand back. Start the sign-in again from ChristoG's Connectors page.";
+    return;
+  }
+  document.getElementById("a").href = url;
+  document.getElementById("link").hidden = false;
+  history.replaceState(null, "", location.pathname);
+  location.replace(url);
+})();
+</script>
+</body></html>
